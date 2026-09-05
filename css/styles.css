@@ -519,6 +519,95 @@ h2 {
     margin-top: 35px;
 }
 
+.repositories {
+    padding: 100px 0 130px;
+}
+
+.repository-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 58px;
+}
+
+.repository-heading h2 {
+    margin: 0;
+    font-size: clamp(46px, 6vw, 78px);
+}
+
+.repository-heading .hero-link {
+    margin-bottom: 7px;
+}
+
+.repository-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--ink);
+    border-left: 1px solid var(--ink);
+}
+
+.repository-card {
+    min-height: 255px;
+    padding: 22px;
+    border-right: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.repository-card:hover {
+    background: var(--acid);
+    transform: translateY(-5px);
+}
+
+.repository-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 48px;
+}
+
+.repository-number {
+    color: var(--ink-soft);
+    font: 500 10px var(--mono);
+}
+
+.repository-language {
+    padding: 5px 7px;
+    color: var(--ink-soft);
+    background: #e3e3d7;
+    font: 9px var(--mono);
+    text-transform: uppercase;
+}
+
+.repository-card h3 {
+    max-width: 270px;
+    margin: 0 0 12px;
+    font-size: 21px;
+    line-height: 1.05;
+    letter-spacing: -0.06em;
+    overflow-wrap: anywhere;
+}
+
+.repository-card p {
+    min-height: 42px;
+    margin: 0 0 22px;
+    color: var(--ink-soft);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.repository-card a {
+    font: 500 10px var(--mono);
+    text-transform: uppercase;
+}
+
+.repository-card a span {
+    margin-left: 6px;
+    color: var(--rust);
+    font-size: 15px;
+}
+
 .site-footer {
     border-top: 1px solid var(--line);
 }
@@ -597,6 +686,23 @@ h2 {
 
     .construction {
         padding: 70px 0 90px;
+    }
+
+    .repositories {
+        padding: 70px 0 90px;
+    }
+
+    .repository-heading {
+        display: block;
+        margin-bottom: 42px;
+    }
+
+    .repository-heading .hero-link {
+        margin-top: 28px;
+    }
+
+    .repository-grid {
+        grid-template-columns: 1fr;
     }
 
     .construction-inner {
