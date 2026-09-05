@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Preguntas frecuentes sobre DevSecOps, cloud y herramientas de seguridad.">
+    <title>FAQs | Markitos MDK</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-content">
+            <a class="brand" href="index.html" aria-label="Markitos MDK, inicio">
+                <span class="brand-symbol" aria-hidden="true">M<span>/</span>K</span>
+                <span class="brand-name">Markitos <strong>MDK</strong></span>
+            </a>
+            <p class="header-note">DevSecOps Kulture</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero" aria-labelledby="page-title">
+            <div class="container">
+                <p class="kicker"><span class="status-dot" aria-hidden="true"></span> Centro de respuestas</p>
+                <h1 id="page-title">Preguntas<br><em>frecuentes.</em></h1>
+                <p class="page-intro">Respuestas directas para entender mejor DevSecOps, elegir por dónde empezar y
+                    trabajar con más confianza.</p>
+            </div>
+        </section>
+
+        <section class="faq-content" aria-label="Preguntas y respuestas">
+            <div class="container faq-layout">
+                <aside class="faq-navigation" aria-label="Índice de preguntas frecuentes">
+                    <p class="kicker">En esta página</p>
+                    <form class="faq-search" role="search">
+                        <label for="faq-search-input">Buscar una pregunta</label>
+                        <input id="faq-search-input" type="search" placeholder="Buscar por título, contenido o tag"
+                            autocomplete="off">
+                    </form>
+                    <ul>
+                        <li><a href="#devsecops">01 / DevSecOps</a></li>
+                        <li><a href="#cloud">02 / Cloud</a></li>
+                        <li><a href="#herramientas">03 / Herramientas</a></li>
+                    </ul>
+                </aside>
+
+                <div>
+                    <section class="faq-group" id="devsecops" aria-labelledby="devsecops-title">
+                        <h2 id="devsecops-title">01 / DevSecOps</h2>
+                        <div class="faq-list">
+                            <details open data-title="Qué significa realmente DevSecOps"
+                                data-content="integrar seguridad ciclo vida software diseño desarrollo pruebas despliegue operación"
+                                data-tags="devsecops fundamentos seguridad">
+                                <summary><span>01</span> ¿Qué significa realmente DevSecOps?</summary>
+                                <p>Es integrar la seguridad en todo el ciclo de vida del software: diseño, desarrollo,
+                                    pruebas, despliegue y operación. La responsabilidad se comparte y los controles se
+                                    automatizan allí donde aportan valor.</p>
+                                <p class="faq-tags"><span>devsecops</span><span>fundamentos</span><span>seguridad</span>
+                                </p>
+                            </details>
+                            <details data-title="Por dónde empieza un equipo pequeño"
+                                data-content="activos dependencias secretos pipeline control sencillo resultados"
+                                data-tags="devsecops inicio equipos">
+                                <summary><span>02</span> ¿Por dónde empieza un equipo pequeño?</summary>
+                                <p>Empieza por conocer tus activos, dependencias y secretos. Después incorpora un
+                                    control sencillo en el pipeline, mide los resultados y amplía el alcance de forma
+                                    progresiva.</p>
+                                <p class="faq-tags"><span>devsecops</span><span>inicio</span><span>equipos</span></p>
+                            </details>
+                            <details data-title="Seguridad significa ralentizar los releases"
+                                data-content="controles rápidos código resultados accionables correcciones releases"
+                                data-tags="devsecops delivery cultura">
+                                <summary><span>03</span> ¿Seguridad significa ralentizar los releases?</summary>
+                                <p>No necesariamente. Los controles rápidos, cercanos al código y con resultados
+                                    accionables ayudan a detectar problemas antes y evitan correcciones costosas al
+                                    final.</p>
+                                <p class="faq-tags"><span>devsecops</span><span>delivery</span><span>cultura</span></p>
+                            </details>
+                        </div>
+                    </section>
+
+                    <section class="faq-group" id="cloud" aria-labelledby="cloud-title">
+                        <h2 id="cloud-title">02 / Cloud</h2>
+                        <div class="faq-list">
+                            <details data-title="Qué debería revisar primero en cloud"
+                                data-content="identidad permisos cuentas roles accesos exposición componentes"
+                                data-tags="cloud iam arquitectura">
+                                <summary><span>04</span> ¿Qué debería revisar primero en cloud?</summary>
+                                <p>La identidad y los permisos. Un inventario claro de cuentas, roles y accesos es la
+                                    base para reducir exposición y entender qué puede hacer cada componente.</p>
+                                <p class="faq-tags"><span>cloud</span><span>iam</span><span>arquitectura</span></p>
+                            </details>
+                            <details data-title="Cómo gestiono los secretos"
+                                data-content="secretos código repositorios gestor credenciales rotación"
+                                data-tags="cloud secretos buenas prácticas">
+                                <summary><span>05</span> ¿Cómo gestiono los secretos?</summary>
+                                <p>No los guardes en el código ni en repositorios. Utiliza un gestor de secretos, limita
+                                    su alcance, rota las credenciales y registra sus usos.</p>
+                                <p class="faq-tags"><span>cloud</span><span>secretos</span><span>buenas prácticas</span>
+                                </p>
+                            </details>
+                        </div>
+                    </section>
+
+                    <section class="faq-group" id="herramientas" aria-labelledby="tools-title">
+                        <h2 id="tools-title">03 / Herramientas</h2>
+                        <div class="faq-list">
+                            <details data-title="Qué herramientas debería aprender primero"
+                                data-content="fundamentos control versiones pipelines contenedores iam modelado amenazas"
+                                data-tags="herramientas aprendizaje stack">
+                                <summary><span>06</span> ¿Qué herramientas debería aprender primero?</summary>
+                                <p>Primero los fundamentos: control de versiones, pipelines, contenedores, IAM y
+                                    modelado de amenazas. Las herramientas concretas cambian; los criterios para
+                                    elegirlas permanecen.</p>
+                                <p class="faq-tags"><span>herramientas</span><span>aprendizaje</span><span>stack</span>
+                                </p>
+                            </details>
+                            <details data-title="Dónde puedo ver ejemplos prácticos"
+                                data-content="recursos git repositorios ejemplos reproducibles estudiar adaptar contexto"
+                                data-tags="herramientas github ejemplos">
+                                <summary><span>07</span> ¿Dónde puedo ver ejemplos prácticos?</summary>
+                                <p>En la sección de recursos de Git encontrarás repositorios y ejemplos reproducibles
+                                    para estudiar las ideas y adaptarlas a tu propio contexto.</p>
+                                <p class="faq-tags"><span>herramientas</span><span>github</span><span>ejemplos</span>
+                                </p>
+                            </details>
+                        </div>
+                    </section>
+
+                    <p class="faq-empty" hidden>No hay preguntas que coincidan con tu búsqueda.</p>
+
+                    <a class="hero-link page-footer-link" href="index.html">Volver al inicio <span
+                            aria-hidden="true">↗</span></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <p><strong>Markitos MDK</strong> · DevSecOps Kulture</p>
+            <p>Hecho con oficio <span aria-hidden="true">·</span> 2026</p>
+        </div>
+    </footer>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
