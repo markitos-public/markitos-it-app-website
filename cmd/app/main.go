@@ -15,6 +15,7 @@ import (
 type PageModel struct {
 	Title       string
 	Description string
+	Hostname    string
 	Faqs        []FAQView
 	Tags        []string
 	Section     string
@@ -39,7 +40,7 @@ func parseTemplates() (*template.Template, error) {
 	)
 }
 
-func IndexHandler(templates *template.Template) http.HandlerFunc {
+func IndexHandler(templates *template.Template, hostname string) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Path != "/" {
 			http.NotFound(w, r)
@@ -49,6 +50,7 @@ func IndexHandler(templates *template.Template) http.HandlerFunc {
 		render(w, templates, "index.html", PageModel{
 			Title:       "Markitos MDK | DevSecOps Kulture",
 			Description: "Markitos MDK: artículos, FAQs, vídeos y recursos de Git sobre DevSecOps.",
+			Hostname:    hostname,
 		})
 	}
 }
@@ -154,9 +156,13 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	hostname, err := os.Hostname()
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	mux := http.NewServeMux()
-	mux.HandleFunc("/", IndexHandler(templates))
+	mux.HandleFunc("/", IndexHandler(templates, hostname))
 	mux.HandleFunc("/faqs", FaqsHandler(templates, faqs.NewClient(faqsEndpoint)))
 	mux.HandleFunc("/articles", ArticlesHandler(templates))
 	mux.HandleFunc("/videos", VideosHandler(templates))
