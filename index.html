@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Articulos y respuestas practicas sobre DevSecOps, cloud y seguridad de software.">
+    <title>Signal &amp; Shield | DevSecOps sin ruido</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="site-shell">
+        <header class="site-header">
+            <a class="brand" href="#inicio" aria-label="Signal and Shield, inicio">
+                <span class="brand-mark" aria-hidden="true">S<span>/</span>S</span>
+                <span class="brand-name">signal <b>&amp;</b> shield</span>
+            </a>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+            <nav id="site-nav" class="site-nav" aria-label="Navegacion principal">
+                <a class="active" href="#articulos">Articulos</a>
+                <a href="#topics">Topics</a>
+                <a href="#faqs">FAQs</a>
+                <a href="#sobre-mi">Sobre el proyecto</a>
+            </nav>
+            <a class="header-cta" href="#newsletter">Suscribirme <span aria-hidden="true">&#8599;</span></a>
+        </header>
+
+        <main id="inicio">
+            <section class="hero" aria-labelledby="hero-title">
+                <div class="hero-copy">
+                    <p class="eyebrow"><span class="pulse"></span>Notas de seguridad para equipos que construyen</p>
+                    <h1 id="hero-title">Seguridad que<br><em>se entrega.</em></h1>
+                    <p class="hero-intro">Ideas concretas para hacer que DevSecOps sea parte natural del desarrollo:
+                        menos ruido, mejores decisiones y software preparado para lo que viene.</p>
+                    <div class="hero-actions">
+                        <a class="button button-dark" href="#articulos">Explorar articulos <span
+                                aria-hidden="true">&#8594;</span></a>
+                        <a class="text-link" href="#faqs">Tengo una pregunta <span aria-hidden="true">&#8599;</span></a>
+                    </div>
+                </div>
+                <div class="hero-visual" aria-label="Panel de estado de seguridad">
+                    <div class="signal-card">
+                        <div class="signal-card-top"><span>SECURITY / PIPELINE</span><span class="live"><i></i>
+                                LIVE</span></div>
+                        <div class="signal-score"><strong>98</strong><span>/ 100<br><small>postura actual</small></span>
+                        </div>
+                        <div class="signal-bars" aria-hidden="true">
+                            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                        <div class="signal-meta"><span>12 checks completados</span><span>hace 04 min</span></div>
+                    </div>
+                    <div class="orbit orbit-one"></div>
+                    <div class="orbit orbit-two"></div>
+                    <span class="visual-label label-top">BUILD // VERIFY // SHIP</span>
+                    <span class="visual-label label-bottom">01 / 04</span>
+                </div>
+            </section>
+
+            <section class="topic-strip" id="topics" aria-label="Temas principales">
+                <span class="strip-label">Explora por tema</span>
+                <div class="topic-list">
+                    <button class="topic-filter active" data-filter="all">Todos <span>08</span></button>
+                    <button class="topic-filter" data-filter="cloud">Cloud <span>03</span></button>
+                    <button class="topic-filter" data-filter="cicd">CI/CD <span>02</span></button>
+                    <button class="topic-filter" data-filter="appsec">AppSec <span>02</span></button>
+                    <button class="topic-filter" data-filter="culture">Cultura <span>01</span></button>
+                </div>
+            </section>
+
+            <section class="articles-section" id="articulos" aria-labelledby="articles-title">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">Archivo reciente</p>
+                        <h2 id="articles-title">Pensar. Construir.<br><em>Proteger.</em></h2>
+                    </div>
+                    <div class="search-wrap"><label for="article-search">Buscar</label><input id="article-search"
+                            type="search" placeholder="Buscar en articulos..." autocomplete="off"><span
+                            aria-hidden="true">&#8981;</span></div>
+                </div>
+
+                <article class="featured-article" data-category="cicd">
+                    <div class="featured-image image-terminal">
+                        <div class="terminal-window"><span class="terminal-dots">&#9679; &#9679;
+                                &#9679;</span><span>deploy.sh</span><code><b>$</b> security scan --project api<br><b class="green">&#10003;</b> 0 critical vulnerabilities<br><b class="green">&#10003;</b> policy gate passed<br><b>$</b> _</code>
+                        </div><span class="image-caption">01 / SECURITY IN PRACTICE</span>
+                    </div>
+                    <div class="featured-copy">
+                        <p class="article-meta">CI/CD <span></span> 8 min de lectura</p>
+                        <h3>El pipeline no es una barrera: es el sistema nervioso de tu seguridad</h3>
+                        <p>Como convertir los controles de seguridad en senales utiles que ayudan al equipo a entregar
+                            con confianza, sin frenar el flujo.</p><a class="read-link" href="#article">Leer articulo
+                            <span>&#8594;</span></a>
+                    </div>
+                </article>
+
+                <div class="article-grid" id="article-grid">
+                    <article class="article-card" data-category="cloud" data-title="Zero Trust para equipos pequenos">
+                        <div class="card-image image-grid"><span class="card-number">02</span>
+                            <div class="grid-map"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                        </div>
+                        <div class="card-body">
+                            <p class="article-meta">CLOUD <span></span> 6 min</p>
+                            <h3>Zero Trust para equipos pequenos: por donde empezar</h3>
+                            <p>Un mapa practico para pasar de la teoria a decisiones de arquitectura.</p><a
+                                class="read-link" href="#article">Leer mas <span>&#8594;</span></a>
+                        </div>
+                    </article>
+                    <article class="article-card" data-category="appsec" data-title="Threat modeling sin drama">
+                        <div class="card-image image-scan"><span class="card-number">03</span>
+                            <div class="scan-ring"></div><span class="scan-label">THREAT<br>MODEL / 24</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="article-meta">APPSEC <span></span> 10 min</p>
+                            <h3>Threat modeling sin drama: una sesion que si funciona</h3>
+                            <p>Preguntas y dinamicas para descubrir riesgos antes de escribir codigo.</p><a
+                                class="read-link" href="#article">Leer mas <span>&#8594;</span></a>
+                        </div>
+                    </article>
+                    <article class="article-card" data-category="culture"
+                        data-title="Metricas de seguridad que importan">
+                        <div class="card-image image-signal"><span class="card-number">04</span>
+                            <div class="signal-wave">/\/\_/\/\</div><span class="signal-big">+37%</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="article-meta">CULTURA <span></span> 5 min</p>
+                            <h3>Las metricas de seguridad que si cambian conversaciones</h3>
+                            <p>Medir lo que el equipo puede aprender, no solo lo que puede contar.</p><a
+                                class="read-link" href="#article">Leer mas <span>&#8594;</span></a>
+                        </div>
+                    </article>
+                </div>
+                <p class="empty-state" hidden>No encontramos articulos con esa busqueda.</p>
+            </section>
+
+            <section class="faq-section" id="faqs" aria-labelledby="faq-title">
+                <div class="faq-intro">
+                    <p class="eyebrow">Centro de respuestas</p>
+                    <h2 id="faq-title">Preguntas<br><em>frecuentes.</em></h2>
+                    <p>Respuestas breves a las dudas que aparecen cuando seguridad y desarrollo empiezan a trabajar
+                        juntos.</p><a class="text-link" href="mailto:hola@signalshield.dev">Hacer otra pregunta
+                        <span>&#8599;</span></a>
+                </div>
+                <div class="faq-list">
+                    <details open>
+                        <summary><span>01</span> Que significa realmente DevSecOps?</summary>
+                        <p>Significa integrar seguridad en el ciclo de vida completo del software, desde el diseno hasta
+                            produccion. No es un equipo nuevo: es una forma compartida de tomar decisiones y automatizar
+                            controles.</p>
+                    </details>
+                    <details>
+                        <summary><span>02</span> Por donde empiezo si mi equipo es pequeno?</summary>
+                        <p>Empieza por visibilidad: inventario de dependencias, secretos y puntos de despliegue. Despues
+                            elige un control automatizado que detecte riesgos temprano y sea facil de mantener.</p>
+                    </details>
+                    <details>
+                        <summary><span>03</span> Como evito que seguridad bloquee los releases?</summary>
+                        <p>Define politicas proporcionales al riesgo y excepciones con fecha de caducidad. Un buen
+                            pipeline separa avisos informativos de los fallos que realmente deben detener un despliegue.
+                        </p>
+                    </details>
+                    <details>
+                        <summary><span>04</span> Que herramientas deberia aprender primero?</summary>
+                        <p>Aprende los fundamentos antes que una herramienta concreta: modelado de amenazas, IAM,
+                            seguridad de contenedores y respuesta a incidentes. Las herramientas cambian; esos criterios
+                            permanecen.</p>
+                    </details>
+                </div>
+            </section>
+
+            <section class="newsletter" id="newsletter">
+                <div>
+                    <p class="eyebrow">Una senal al mes</p>
+                    <h2>Ideas utiles.<br><em>Sin spam.</em></h2>
+                </div>
+                <form id="newsletter-form"><label for="email">Tu email profesional</label>
+                    <div class="email-field"><input id="email" name="email" type="email"
+                            placeholder="nombre@empresa.com" required><button type="submit"
+                            aria-label="Suscribirme">&#8594;</button></div>
+                    <p class="form-note" id="form-message">Articulos, aprendizajes y recursos. Una vez al mes.</p>
+                </form>
+            </section>
+        </main>
+
+        <footer class="site-footer" id="sobre-mi"><span class="brand-name">signal <b>&amp;</b>
+                shield</span><span>DevSecOps, explicado con claridad.</span><span class="footer-right">Hecho para
+                construir mejor <span aria-hidden="true">&#8599;</span></span></footer>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
