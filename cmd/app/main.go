@@ -15,17 +15,10 @@ import (
 type PageModel struct {
 	Title       string
 	Description string
-}
-
-type IndexModel struct {
-	PageModel
-	ResourceCount int
-}
-
-type FaqsModel struct {
-	PageModel
-	Faqs []FAQView
-	Tags []string
+	Faqs        []FAQView
+	Tags        []string
+	Section     string
+	Status      string
 }
 
 type FAQView struct {
@@ -36,68 +29,52 @@ type FAQView struct {
 	TagText string
 }
 
-type SectionModel struct {
-	PageModel
-	Section string
-	Status  string
-}
-
-type App struct {
-	templates *template.Template
-	faqs      *faqs.Client
-}
-
-func NewApp(faqsClient *faqs.Client) (*App, error) {
-	templates, err := template.ParseFiles(
+func parseTemplates() (*template.Template, error) {
+	return template.ParseFiles(
 		"index.html",
 		"faqs.html",
 		"articles.html",
 		"videos.html",
 		"git.html",
 	)
-	if err != nil {
-		return nil, err
-	}
-
-	return &App{templates: templates, faqs: faqsClient}, nil
 }
 
-func (app *App) IndexHandler(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/" {
-		http.NotFound(w, r)
-		return
-	}
+func IndexHandler(templates *template.Template) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Path != "/" {
+			http.NotFound(w, r)
+			return
+		}
 
-	app.render(w, "index.html", IndexModel{
-		PageModel: PageModel{
+		render(w, templates, "index.html", PageModel{
 			Title:       "Markitos MDK | DevSecOps Kulture",
 			Description: "Markitos MDK: artículos, FAQs, vídeos y recursos de Git sobre DevSecOps.",
-		},
-		ResourceCount: 4,
-	})
+		})
+	}
 }
 
-func (app *App) FaqsHandler(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/faqs" {
-		http.NotFound(w, r)
-		return
-	}
+func FaqsHandler(templates *template.Template, client *faqs.Client) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Path != "/faqs" {
+			http.NotFound(w, r)
+			return
+		}
 
-	items, err := app.faqs.List()
-	if err != nil {
-		log.Printf("list FAQs: %v", err)
-		http.Error(w, "unable to load FAQs", http.StatusBadGateway)
-		return
-	}
-
-	model := FaqsModel{
-		PageModel: PageModel{
+		model := PageModel{
 			Title:       "FAQs | Markitos MDK",
 			Description: "Preguntas frecuentes sobre DevSecOps, cloud y herramientas de seguridad.",
-		},
+		}
+
+		items, err := client.List()
+		if err != nil {
+			log.Printf("list FAQs: %v", err)
+			render(w, templates, "faqs.html", model)
+			return
+		}
+
+		model.Faqs, model.Tags = buildFAQView(items)
+		render(w, templates, "faqs.html", model)
 	}
-	model.Faqs, model.Tags = buildFAQView(items)
-	app.render(w, "faqs.html", model)
 }
 
 func buildFAQView(items []faqs.FAQ) ([]FAQView, []string) {
@@ -126,36 +103,42 @@ func buildFAQView(items []faqs.FAQ) ([]FAQView, []string) {
 	return views, uniqueTags
 }
 
-func (app *App) ArticlesHandler(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/articles" {
-		http.NotFound(w, r)
-		return
-	}
+func ArticlesHandler(templates *template.Template) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Path != "/articles" {
+			http.NotFound(w, r)
+			return
+		}
 
-	app.render(w, "articles.html", SectionModel{PageModel: PageModel{Title: "Artículos | Markitos MDK", Description: "Artículos de Markitos MDK sobre DevSecOps, cloud y seguridad."}, Section: "Artículos", Status: "Lecturas del taller"})
+		render(w, templates, "articles.html", PageModel{Title: "Artículos | Markitos MDK", Description: "Artículos de Markitos MDK sobre DevSecOps, cloud y seguridad.", Section: "Artículos", Status: "Lecturas del taller"})
+	}
 }
 
-func (app *App) VideosHandler(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/videos" {
-		http.NotFound(w, r)
-		return
-	}
+func VideosHandler(templates *template.Template) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Path != "/videos" {
+			http.NotFound(w, r)
+			return
+		}
 
-	app.render(w, "videos.html", SectionModel{PageModel: PageModel{Title: "Vídeos | Markitos MDK", Description: "Vídeos técnicos de Markitos MDK sobre DevSecOps y seguridad."}, Section: "Vídeos", Status: "Sesiones del taller"})
+		render(w, templates, "videos.html", PageModel{Title: "Vídeos | Markitos MDK", Description: "Vídeos técnicos de Markitos MDK sobre DevSecOps y seguridad.", Section: "Vídeos", Status: "Sesiones del taller"})
+	}
 }
 
-func (app *App) GitHandler(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/git" {
-		http.NotFound(w, r)
-		return
-	}
+func GitHandler(templates *template.Template) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Path != "/git" {
+			http.NotFound(w, r)
+			return
+		}
 
-	app.render(w, "git.html", SectionModel{PageModel: PageModel{Title: "Recursos de Git | Markitos MDK", Description: "Repositorios y recursos de Git de Markitos MDK."}, Section: "Recursos de Git", Status: "Código del taller"})
+		render(w, templates, "git.html", PageModel{Title: "Recursos de Git | Markitos MDK", Description: "Repositorios y recursos de Git de Markitos MDK.", Section: "Recursos de Git", Status: "Código del taller"})
+	}
 }
 
-func (app *App) render(w http.ResponseWriter, name string, model any) {
+func render(w http.ResponseWriter, templates *template.Template, name string, model PageModel) {
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	if err := app.templates.ExecuteTemplate(w, name, model); err != nil {
+	if err := templates.ExecuteTemplate(w, name, model); err != nil {
 		log.Printf("render %s: %v", name, err)
 		http.Error(w, "internal server error", http.StatusInternalServerError)
 	}
@@ -167,17 +150,17 @@ func main() {
 		log.Fatal("FAQS_API_ENDPOINT must be set")
 	}
 
-	app, err := NewApp(faqs.NewClient(faqsEndpoint))
+	templates, err := parseTemplates()
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	mux := http.NewServeMux()
-	mux.HandleFunc("/", app.IndexHandler)
-	mux.HandleFunc("/faqs", app.FaqsHandler)
-	mux.HandleFunc("/articles", app.ArticlesHandler)
-	mux.HandleFunc("/videos", app.VideosHandler)
-	mux.HandleFunc("/git", app.GitHandler)
+	mux.HandleFunc("/", IndexHandler(templates))
+	mux.HandleFunc("/faqs", FaqsHandler(templates, faqs.NewClient(faqsEndpoint)))
+	mux.HandleFunc("/articles", ArticlesHandler(templates))
+	mux.HandleFunc("/videos", VideosHandler(templates))
+	mux.HandleFunc("/git", GitHandler(templates))
 	mux.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
 	mux.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("js"))))
 
