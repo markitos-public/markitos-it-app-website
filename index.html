@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Markitos MDK: artículos, FAQs, vídeos y recursos de Git sobre DevSecOps.">
-    <title>Markitos MDK | DevSecOps Kulture</title>
+    <meta name="description" content="{{ .Description }}">
+    <title>{{ .Title }}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -17,7 +17,7 @@
 <body>
     <header class="site-header">
         <div class="container header-content">
-            <a class="brand" href="index.html" aria-label="Markitos MDK, inicio">
+            <a class="brand" href="/" aria-label="Markitos MDK, inicio">
                 <span class="brand-symbol" aria-hidden="true">M<span>/</span>K</span>
                 <span class="brand-name">Markitos <strong>MDK</strong></span>
             </a>
@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="resource-list">
-                    <a class="resource-card card-articles" href="articulos.html">
+                    <a class="resource-card card-articles" href="/articles">
                         <span class="card-number">01</span>
                         <span class="card-icon" aria-hidden="true">↗</span>
                         <span class="card-label">Lectura</span>
@@ -54,7 +54,7 @@
                         <p>Notas y reflexiones sobre DevSecOps, cloud y seguridad aplicada.</p>
                         <span class="card-arrow" aria-hidden="true">→</span>
                     </a>
-                    <a class="resource-card card-faqs" href="faqs.html">
+                    <a class="resource-card card-faqs" href="/faqs">
                         <span class="card-number">02</span>
                         <span class="card-icon" aria-hidden="true">?</span>
                         <span class="card-label">Respuestas</span>
@@ -62,7 +62,7 @@
                         <p>Respuestas claras para las dudas que aparecen en el camino.</p>
                         <span class="card-arrow" aria-hidden="true">→</span>
                     </a>
-                    <a class="resource-card card-videos" href="videos.html">
+                    <a class="resource-card card-videos" href="/videos">
                         <span class="card-number">03</span>
                         <span class="card-icon" aria-hidden="true">▶</span>
                         <span class="card-label">En pantalla</span>
@@ -70,7 +70,7 @@
                         <p>Demostraciones y sesiones para ver las ideas funcionando.</p>
                         <span class="card-arrow" aria-hidden="true">→</span>
                     </a>
-                    <a class="resource-card card-git" href="git.html">
+                    <a class="resource-card card-git" href="/git">
                         <span class="card-number">04</span>
                         <span class="card-icon" aria-hidden="true">&lt;/&gt;</span>
                         <span class="card-label">En el repositorio</span>
